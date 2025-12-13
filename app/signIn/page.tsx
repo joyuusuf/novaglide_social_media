@@ -1,7 +1,7 @@
 import Image from "next/image";
 import LoginCard from "@/components/LoginCard";
 
-export default function SignUp() {
+export default function SignIn() {
   return (
     <main className="relative min-h-screen w-full overflow-hidden">
       {/* Background image */}
@@ -22,7 +22,7 @@ export default function SignUp() {
             {/* Logo */}
             <div className="mb-10 flex items-center gap-2 text-blue-600 font-semibold">
               <span className="text-lg">⚡</span>
-              <span>pingup</span>
+              <span>NovaGlide</span>
             </div>
 
             {/* Social proof */}
@@ -33,7 +33,7 @@ export default function SignUp() {
                 <div className="h-7 w-7 rounded-full bg-gray-500" />
               </div>
               <span className="text-xs">
-                Used by <strong>12k+</strong> developers
+                Used by <strong>12k+</strong> Users
               </span>
             </div>
 
@@ -46,7 +46,7 @@ export default function SignUp() {
             {/* Subtext */}
             <p className="mt-4 max-w-md text-base text-slate-600">
               connect with global community <br />
-              on pingup.
+              on NovaGlide.
             </p>
           </section>
 
