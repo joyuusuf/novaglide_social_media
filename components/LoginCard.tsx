@@ -54,7 +54,7 @@ export default function LoginCard() {
         type: "success",
       });
 
-      setTimeout(() => router.push("/"), 2000);
+      setTimeout(() => router.push("/feed"), 2000);
     }, 2000);
   };
 
@@ -68,7 +68,7 @@ export default function LoginCard() {
         type: "success",
       });
 
-      setTimeout(() => router.push("/"), 1500);
+      setTimeout(() => router.push("/feed"), 1500);
     }, 2000);
   };
 
@@ -84,7 +84,7 @@ export default function LoginCard() {
 
       <div className="w-full max-w-sm rounded-xl bg-white p-6 shadow-xl">
         <h2 className="text-center text-sm font-semibold text-slate-800">
-          Sign in to
+          Sign In
         </h2>
         <p className="mb-4 text-center text-xs text-slate-500">
           Welcome back! Please sign in to continue

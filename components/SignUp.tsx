@@ -53,32 +53,40 @@ export default function SignUpCard() {
     }, 4000);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
 
-    if (!isFormValid) {
-      addToast("Please fill all fields correctly", "error");
-      return;
-    }
+  if (!isFormValid) {
+    addToast("Please fill all fields correctly", "error");
+    return;
+  }
 
-    setLoading(true);
+  // Mark that user interacted
+  sessionStorage.setItem("signUpInteracted", "true");
 
-    setTimeout(() => {
-      setLoading(false);
-      addToast("Account created successfully!", "success");
-      router.push("/signIn");
-    }, 4000);
-  };
+  setLoading(true);
 
-  const handleGoogleSignup = () => {
-    setGoogleLoading(true);
+  setTimeout(() => {
+    setLoading(false);
+    addToast("Account created successfully!", "success");
+    router.push("/signIn");
+  }, 4000);
+};
 
-    setTimeout(() => {
-      setGoogleLoading(false);
-      addToast("Signed up with Google!", "success");
-      router.push("/signIn");
-    }, 4000);
-  };
+
+const handleGoogleSignup = () => {
+  // Mark that user interacted
+  sessionStorage.setItem("signUpInteracted", "true");
+
+  setGoogleLoading(true);
+
+  setTimeout(() => {
+    setGoogleLoading(false);
+    addToast("Signed up with Google!", "success");
+    router.push("/signIn");
+  }, 4000);
+};
+
 
   return (
     <div className="relative w-full max-w-sm rounded-xl bg-white p-6 shadow-xl">

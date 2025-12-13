@@ -11,13 +11,13 @@ export default function ConnectionsTabs() {
     {
       name: "Richard Hendricks",
       username: "@Richard_Hendricks",
-      avatar: "/users/richard.png",
+      avatar: "/avatar.jpg",
       bio: "🌐 Dreamer | 📚 Learner | 🚀 Doer Exploring life one step at a time.✨ D...",
     },
     {
       name: "Alexa james",
       username: "@alexa_james",
-      avatar: "/users/alexa.png",
+      avatar: "/avatar.jpg",
       bio: "🌐 Dreamer | 📚 Learner | 🚀 Doer Exploring life one step at a time.✨ D...",
     },
   ];

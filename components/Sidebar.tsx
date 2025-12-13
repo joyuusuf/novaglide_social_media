@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 
 const navItems = [
-  { label: "Feed", icon: Home, path: "/" },
+  { label: "Feed", icon: Home, path: "/feed" },
   { label: "Messages", icon: MessageSquare, path: "/messages" },
   { label: "Connections", icon: Users, path: "/connections" },
   { label: "Discover", icon: Compass, path: "/discover" },
@@ -31,7 +31,7 @@ export default function Sidebar() {
         {/* Logo */}
         <div className="mb-8 flex items-center gap-2 px-2 font-semibold text-blue-600">
           <span>⚡</span>
-          <span>pingup</span>
+          <span>NovaGlide</span>
         </div>
 
         {/* Navigation */}

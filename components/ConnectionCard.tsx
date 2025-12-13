@@ -16,7 +16,7 @@ export default function ConnectionCard({ name, username, avatar, bio }: Props) {
   return (
     <div className="bg-white shadow-sm rounded-xl p-5 flex items-start space-x-4">
       <Image
-        src={avatar}
+        src="/avatar.jpg"
         alt={name}
         width={50}
         height={50}

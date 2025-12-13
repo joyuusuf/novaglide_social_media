@@ -1,5 +1,5 @@
 "use client";
-import ConnectionsTabs from "../../components/ConnectionsTabs";
+import ConnectionsTabs from "../../../components/ConnectionsTabs";
 
 export default function ConnectionsPage() {
   return (

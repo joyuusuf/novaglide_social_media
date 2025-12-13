@@ -1,6 +1,6 @@
 "use client";
 
-import MessageList from "../../components/MessageList";
+import MessageList from "../../../components/MessageList";
 
 export default function MessagesPage() {
   return (

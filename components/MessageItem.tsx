@@ -11,14 +11,15 @@ interface Props {
   bio: string;
 }
 
-export default function MessageItem({ name, username, avatar, bio }: Props) {
+export function MessageItem({ name, username, avatar, bio }: Props) {
   const router = useRouter();
 
   return (
-    <div className="w-full bg-white shadow-sm rounded-xl px-5 py-5 flex items-start justify-between">
+    <div className="bg-white shadow-sm rounded-xl px-5 py-5 flex items-start justify-between
+                    transform transition duration-300 hover:-translate-y-1 hover:shadow-lg">
       <div className="flex items-start space-x-4">
         <Image
-          src={avatar}
+          src={avatar || "/avatar.jpg"}
           alt={name}
           width={48}
           height={48}

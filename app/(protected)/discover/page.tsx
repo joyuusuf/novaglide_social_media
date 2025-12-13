@@ -1,7 +1,7 @@
 "use client";
 
-import DiscoverSearch from "../../components/DiscoverSearch";
-import DiscoverCard from "../../components/DiscoverCard";
+import DiscoverSearch from "../../../components/DiscoverSearch";
+import DiscoverCard from "../../../components/DiscoverCard";
 
 export default function DiscoverPage() {
     const users = [

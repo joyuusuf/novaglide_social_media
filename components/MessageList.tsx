@@ -1,32 +1,44 @@
-import MessageItem from "./MessageItem";
+"use client";
+
+import { MessageItem } from "./MessageItem";
 
 const users = [
   {
     name: "John Warren",
     username: "@john_warren",
-    avatar: "/users/john.png",
+    avatar: "/avatar.jpg",
     bio: "🌐 Dreamer | 📚 Learner | 🚀 Doer Exploring life one step at a time.✨ Staying curious. Creating with purpose."
   },
   {
     name: "Richard Hendricks",
     username: "@Richard_Hendricks",
-    avatar: "/users/richard.png",
+    avatar: "/avatar.jpg",
     bio: "🌐 Dreamer | 📚 Learner | 🚀 Doer Exploring life one step at a time.✨ Staying curious. Creating with purpose."
   },
   {
-    name: "Alexa james",
+    name: "Alexa James",
     username: "@alexa_james",
-    avatar: "/users/alexa.png",
+    avatar: "/avatar.jpg",
     bio: "🌐 Dreamer | 📚 Learner | 🚀 Doer Exploring life one step at a time.✨ Staying curious. Creating with purpose."
   }
 ];
 
 export default function MessageList() {
   return (
-    <div className="space-y-4">
-      {users.map((u, i) => (
-        <MessageItem key={i} {...u} />
-      ))}
-    </div>
+  <>
+    
+
+      {/* Message items */}
+      <div className="space-y-6">
+        {users.map((user, i) => (
+          <div
+            key={i}
+            className="transform transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+          >
+            <MessageItem {...user} />
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
