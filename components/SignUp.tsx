@@ -67,7 +67,7 @@ export default function SignUpCard() {
       setLoading(false);
       addToast("Account created successfully!", "success");
       router.push("/signIn");
-    }, 2000);
+    }, 4000);
   };
 
   const handleGoogleSignup = () => {
@@ -77,7 +77,7 @@ export default function SignUpCard() {
       setGoogleLoading(false);
       addToast("Signed up with Google!", "success");
       router.push("/signIn");
-    }, 2000);
+    }, 4000);
   };
 
   return (
