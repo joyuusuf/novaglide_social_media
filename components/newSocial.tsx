@@ -39,7 +39,7 @@ export default function NewSocial({ date, text, image }: SocialPostProps) {
       {image && (
         <div className="w-full">
           <Image
-            src={image}
+            src="/car.jpg"
             alt="post image"
             width={900}
             height={600}

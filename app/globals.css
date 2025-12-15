@@ -152,3 +152,30 @@
   animation-timing-function: linear;
   animation-fill-mode: forwards;
 }
+
+
+.animate-cube-next {
+  animation: cubeNext 0.5s ease forwards;
+}
+
+.animate-cube-prev {
+  animation: cubePrev 0.5s ease forwards;
+}
+
+@keyframes cubeNext {
+  from {
+    transform: rotateY(90deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes cubePrev {
+  from {
+    transform: rotateY(-90deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
