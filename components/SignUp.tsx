@@ -14,6 +14,7 @@ export default function SignUpCard() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [username, setUsername] = useState("");
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -39,6 +40,7 @@ export default function SignUpCard() {
   }, [password]);
 
   const isFormValid =
+    username.trim() &&
     fullName.trim() &&
     email.trim() &&
     password &&
@@ -84,7 +86,7 @@ export default function SignUpCard() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        fullName,
+        username,
         email,
         password,
       }),
@@ -198,6 +200,19 @@ export default function SignUpCard() {
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Username */}
+        <div>
+          <label className="mb-1 block text-xs text-slate-600">Username</label>
+          <input
+            type="text"
+            required
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Choose a username"
+            className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm outline-none focus:border-slate-400"
+          />
+        </div>
+
         {/* Full name */}
         <div>
           <label className="mb-1 block text-xs text-slate-600">Full name</label>
