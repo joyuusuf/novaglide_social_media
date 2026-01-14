@@ -22,6 +22,7 @@ export default function SignUpCard() {
   const [googleLoading, setGoogleLoading] = useState(false);
 
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
+  const [error, setError] = useState("");
 
   const passwordStrength = useMemo(() => {
     let score = 0;
@@ -53,39 +54,66 @@ export default function SignUpCard() {
     }, 4000);
   };
 
-const handleSubmit = (e: React.FormEvent) => {
-  e.preventDefault();
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
 
-  if (!isFormValid) {
-    addToast("Please fill all fields correctly", "error");
-    return;
-  }
+  //   if (!isFormValid) {
+  //     addToast("Please fill all fields correctly", "error");
+  //     return;
+  //   }
 
-  // Mark that user interacted
-  sessionStorage.setItem("signUpInteracted", "true");
+  //   // Mark that user interacted
+  //   sessionStorage.setItem("signUpInteracted", "true");
 
-  setLoading(true);
+  //   setLoading(true);
 
-  setTimeout(() => {
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //     addToast("Account created successfully!", "success");
+  //     router.push("/signIn");
+  //   }, 4000);
+  // };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    setLoading(true);
+    setError("");
+
+    const res = await fetch("/api/auth/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        fullName,
+        email,
+        password,
+      }),
+    });
+
+    const data = await res.json();
     setLoading(false);
-    addToast("Account created successfully!", "success");
+
+    if (!res.ok) {
+      setError(data.message);
+      return;
+    }
+
+    sessionStorage.setItem("signUpInteracted", "true");
     router.push("/signIn");
-  }, 4000);
-};
+  };
 
+  const handleGoogleSignup = () => {
+    // Mark that user interacted
+    sessionStorage.setItem("signUpInteracted", "true");
 
-const handleGoogleSignup = () => {
-  // Mark that user interacted
-  sessionStorage.setItem("signUpInteracted", "true");
+    setGoogleLoading(true);
 
-  setGoogleLoading(true);
-
-  setTimeout(() => {
-    setGoogleLoading(false);
-    addToast("Signed up with Google!", "success");
-    router.push("/signIn");
-  }, 4000);
-};
+    setTimeout(() => {
+      setGoogleLoading(false);
+      addToast("Signed up with Google!", "success");
+      router.push("/signIn");
+    }, 4000);
+  };
 
 
   return (
@@ -99,9 +127,8 @@ const handleGoogleSignup = () => {
           >
             <div className="flex items-center justify-between px-4 py-3">
               <p
-                className={`text-sm font-medium ${
-                  toast.type === "success" ? "text-green-700" : "text-red-700"
-                }`}
+                className={`text-sm font-medium ${toast.type === "success" ? "text-green-700" : "text-red-700"
+                  }`}
               >
                 {toast.message}
               </p>
@@ -114,9 +141,8 @@ const handleGoogleSignup = () => {
             </div>
             <div className="h-1 w-full bg-gray-200">
               <div
-                className={`h-full ${
-                  toast.type === "success" ? "bg-green-600" : "bg-red-600"
-                } origin-right animate-shrink`}
+                className={`h-full ${toast.type === "success" ? "bg-green-600" : "bg-red-600"
+                  } origin-right animate-shrink`}
                 style={{ animationDuration: "4000ms" }}
               />
             </div>
@@ -229,10 +255,10 @@ const handleGoogleSignup = () => {
                       passwordStrength.label === "Weak"
                         ? "25%"
                         : passwordStrength.label === "Fair"
-                        ? "50%"
-                        : passwordStrength.label === "Good"
-                        ? "75%"
-                        : "100%",
+                          ? "50%"
+                          : passwordStrength.label === "Good"
+                            ? "75%"
+                            : "100%",
                   }}
                 />
               </div>
