@@ -31,32 +31,70 @@ export default function LoginCard() {
       .join("");
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
 
-    if (!isFormValid) {
-      setToast({
-        message: "Please enter your email and password",
-        type: "error",
-      });
+  //   if (!isFormValid) {
+  //     setToast({
+  //       message: "Please enter your email and password",
+  //       type: "error",
+  //     });
+  //     return;
+  //   }
+
+  //   setLoading(true);
+
+  //   const hashedPassword = await hashPassword(password);
+  //   console.log({ email, password: hashedPassword });
+
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //     setToast({
+  //       message: "Login successful",
+  //       type: "success",
+  //     });
+
+  //     setTimeout(() => router.push("/feed"), 2000);
+  //   }, 2000);
+  // };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  if (!isFormValid) {
+    setToast({ message: "Please enter your email and password", type: "error" });
+    return;
+  }
+
+  setLoading(true);
+
+  try {
+    const res = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      setToast({ message: data.message, type: "error" });
+      setLoading(false);
       return;
     }
 
-    setLoading(true);
+    // save token (example: localStorage)
+    localStorage.setItem("token", data.token);
 
-    const hashedPassword = await hashPassword(password);
-    console.log({ email, password: hashedPassword });
-
-    setTimeout(() => {
-      setLoading(false);
-      setToast({
-        message: "Login successful",
-        type: "success",
-      });
-
-      setTimeout(() => router.push("/feed"), 2000);
-    }, 2000);
-  };
+    setToast({ message: "Login successful", type: "success" });
+    setTimeout(() => router.push("/feed"), 1500);
+  } catch (err) {
+    console.error(err);
+    setToast({ message: "Something went wrong", type: "error" });
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleGoogleLogin = () => {
     setGoogleLoading(true);
