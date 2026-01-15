@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "NovaGlide",
-  description: "Connect globally with NovaGlide",
+  title: "NovaGlide Chat App",
+  description: "Connect globally with Friends and Family using NovaGlide Chat App",
 };
 
 export default function RootLayout({
